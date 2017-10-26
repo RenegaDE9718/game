@@ -12,7 +12,7 @@ bool right;
 bool jump;
 int gravity = 10;
 int distance = 0;
-int jumpHeight = 300;
+int jumpHeight = 300;	// Festgelegte Sprunghöhe
 double xPos = Fensterbreite/2;
 double yPos = Fensterhoehe/2;
 
@@ -40,15 +40,15 @@ public:
 			xPos += 5;
 		}
 
-		if (yPos + bild.height() <= Fensterhoehe && jump == 0) {
+		if (yPos + bild.height() <= Fensterhoehe && jump == 0) { // Schwerkraft, wirkt erst nach erreichen der maximalen Sprunghöhe
 			yPos += gravity;
 		}
 
-		if (yPos + bild.height() == Fensterhoehe) {
+		if (yPos + bild.height() == Fensterhoehe) { // Sprungvariable setzen
 			jump = true;
 		}
 
-		if (jump == 1 && jumpHeight > distance) {
+		if (jump == 1 && jumpHeight > distance) {	// Funktion für den Sprung der Spielfigur
 			yPos -= 10;
 			distance += 10;
 		}
@@ -56,6 +56,14 @@ public:
 		{
 			jump = false;
 			distance = 0;
+		}
+
+		if (xPos < 0) {
+			xPos = Fensterbreite + xPos - bild.width();
+		}
+
+		if (xPos + bild.width() > Fensterbreite) {
+			xPos = Fensterbreite - xPos - bild.width();
 		}
 	}
 
