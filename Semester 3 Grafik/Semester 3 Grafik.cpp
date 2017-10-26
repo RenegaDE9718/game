@@ -10,7 +10,6 @@ const int Fensterhoehe = 600;
 bool left;
 bool right;
 bool up;
-bool down;
 bool jump;
 double rotation = 0.0;
 double turnspeed = 2.5;
@@ -32,7 +31,6 @@ public:
 		left = input().down(Gosu::ButtonName::KB_LEFT);
 		right = input().down(Gosu::ButtonName::KB_RIGHT);
 		up = input().down(Gosu::ButtonName::KB_UP);
-		down = input().down(Gosu::ButtonName::KB_DOWN);
 		jump = input().down(Gosu::ButtonName::KB_SPACE);
 
 		if (left == 1) {
@@ -44,9 +42,7 @@ public:
 		if (up == 1) {
 			yPos -= 5;
 		}
-		if (down == 1) {
-			yPos += 5;
-		}
+
 		if (jump == 1) {
 			yPos -= 20;
 		}
