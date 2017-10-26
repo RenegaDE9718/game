@@ -5,14 +5,14 @@
 #include <Gosu/Gosu.hpp>
 #include <Gosu/AutoLink.hpp>
 
-const int Fensterbreite = 800;
 const int Fensterhoehe = 600;
+const int Fensterbreite = 800;
 bool left;
 bool right;
-bool up;
 bool jump;
-double rotation = 0.0;
-double turnspeed = 2.5;
+int gravity = 10;
+int distance = 0;
+int jumpHeight = 300;
 double xPos = Fensterbreite/2;
 double yPos = Fensterhoehe/2;
 
@@ -22,41 +22,46 @@ public:
 	Gosu::Image bild;
 	GameWindow()
 		: Window(640, 480)
-		, bild("trekt.png")
+		, bild("placeholder.png")
 	{
 		set_caption("Gosu Tutorial Game mit Git");
 	}
 
 	void update() override {
+
 		left = input().down(Gosu::ButtonName::KB_LEFT);
 		right = input().down(Gosu::ButtonName::KB_RIGHT);
-		up = input().down(Gosu::ButtonName::KB_UP);
-		jump = input().down(Gosu::ButtonName::KB_SPACE);
 
 		if (left == 1) {
 			xPos -= 5;
 		}
+
 		if (right == 1) {
 			xPos += 5;
 		}
-		if (up == 1) {
-			yPos -= 5;
+
+		if (yPos + bild.height() <= Fensterhoehe && jump == 0) {
+			yPos += gravity;
 		}
 
-		if (jump == 1) {
-			yPos -= 20;
+		if (yPos + bild.height() == Fensterhoehe) {
+			jump = true;
 		}
 
-		if (yPos + 280 <= Fensterhoehe) {
-			yPos += 10;
+		if (jump == 1 && jumpHeight > distance) {
+			yPos -= 10;
+			distance += 10;
+		}
+		else
+		{
+			jump = false;
+			distance = 0;
 		}
 	}
 
 	void draw() override {
-		bild.draw_rot(xPos, yPos, 0.0,
-			0.0, // Rotationswinkel in Grad
-			0.5, 0.5, // Position der "Mitte" relativ zu x, y
-			0.5, 0.5
+
+		bild.draw_rot(xPos, yPos, 0.0, 0.0, 1.0, 1.0
 
 		);
 
