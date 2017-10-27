@@ -58,11 +58,11 @@ public:
 			distance = 0;
 		}
 
-		if (xPos < 0) {
+		if (xPos < 0) {			// Verlassen des Bildschirms nach links und dann wechsel nach rechts
 			xPos = Fensterbreite + xPos - bild.width();
 		}
 
-		if (xPos + bild.width() > Fensterbreite) {
+		if (xPos + bild.width() > Fensterbreite) {		// Verlassen des Bildschirms nach rechts und dann wechsel nach links
 			xPos = Fensterbreite - xPos - bild.width();
 		}
 	}
