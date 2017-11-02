@@ -78,7 +78,9 @@ bool collision(vector<platform> v_plat, double xPos, double yPos) {
 
 	for (int i = 0; i < v_plat.size() - 1; i++) {
 
-		if (yPos == v_plat.at(i).getY()) {		// Kollisionsabfrage auf der yAchse
+		double mem = v_plat.at(i).getY();
+
+		if (yPos == mem || yPos > mem && yPos < mem + 10) {		// Kollisionsabfrage auf der yAchse
 
 			double platLinks = v_plat.at(i).getX();
 
@@ -88,12 +90,10 @@ bool collision(vector<platform> v_plat, double xPos, double yPos) {
 				}
 
 		}
-		else if (i == v_plat.size() - 1 && yPos != v_plat.at(i).getY())
-		{
-			return 0;
-		}
 
 	}
+
+	return 0;
 	
 }
 
