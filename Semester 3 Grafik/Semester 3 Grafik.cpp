@@ -2,22 +2,25 @@
 //
 
 #include "stdafx.h"
+#include <windows.h>
+#include <vector>
 #include <Gosu/Gosu.hpp>
 #include <Gosu/AutoLink.hpp>
 
 
-const int windowHeight = 600;
+const int windowHeight = GetSystemMetrics(SM_CYSCREEN);
 const int windowWidth = 800;
 
 bool left;
 bool right;
-bool jump;
+bool jump = 0;
 
 int gravity = 10;
 int distance = 0;		// Zählvariable für die Sprunghöhe
 int jumpHeight = 300;	// Festgelegte Sprunghöhe
 double xPos = windowWidth/2;
 double yPos = windowHeight/2;
+
 
 
 
@@ -64,7 +67,7 @@ public:
 
 	Gosu::Image bild;
 	GameWindow()
-		: Window(640, 480)
+		: Window(windowWidth, windowHeight)
 		, bild("placeholder.png")
 	{
 		set_caption("Gosu Tutorial Game mit Git");
@@ -102,7 +105,7 @@ public:
 		}
 
 		if (xPos < 0) {			// Verlassen des Bildschirms nach links und dann wechsel nach rechts
-			xPos = windowWidth + xPos - bild.width();
+			xPos = windowWidth - (bild.width() / 2);
 		}
 
 		if (xPos + bild.width() > windowWidth) {		// Verlassen des Bildschirms nach rechts und dann wechsel nach links
@@ -117,7 +120,7 @@ public:
 		platform p;
 		p.setX(100);
 		p.setY(100);
-		bild.draw_rot(xPos, yPos, 0.0, 0.0, 1.0, 1.0);
+		bild.draw_rot(xPos, yPos, 0.0, 0.0, 0.5, 0.0);
 		graphics().draw_quad(p.getX(),p.getY(),Gosu::Color::GREEN,
 							p.getX() + p.getWidth(), p.getY(), Gosu::Color::GREEN,
 							p.getX(), p.getY() + p.getHeight(), Gosu::Color::GREEN,
