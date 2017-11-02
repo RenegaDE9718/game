@@ -4,25 +4,14 @@
 #include "stdafx.h"
 #include <windows.h>
 #include <vector>
+#include <time.h>
 #include <Gosu/Gosu.hpp>
 #include <Gosu/AutoLink.hpp>
+using namespace std;
 
 
 const int windowHeight = GetSystemMetrics(SM_CYSCREEN);
 const int windowWidth = 800;
-
-bool left;
-bool right;
-bool jump = 0;
-
-int gravity = 10;
-int distance = 0;		// Zählvariable für die Sprunghöhe
-int jumpHeight = 300;	// Festgelegte Sprunghöhe
-double xPos = windowWidth/2;
-double yPos = windowHeight/2;
-
-
-
 
 class platform {
 
@@ -59,11 +48,74 @@ public:
 
 };
 
+vector<platform> createPlatforms(vector<platform> v_plat, int windowHeight) {
+
+	platform p;
+
+	if (v_plat.size() == 0) {
+
+		p.setX(windowWidth / 2 - 50);
+		p.setY(windowHeight - 10);
+		v_plat.push_back(p);
+	}
+
+	if (v_plat.size() < 10) {
+
+		p.setX(rand() % 701);
+		p.setY(v_plat.back().getY() - (rand() % 200 + 50));
+
+		v_plat.push_back(p);
+
+	}
+
+	return v_plat;
+}
+
+bool collision(vector<platform> v_plat, double xPos, double yPos) {
+
+	double figLinks = xPos - 50;		// Hitbox Ende links
+	double figRechts = xPos + 50;		// Hitbox Ende rechts
+
+	for (int i = 0; i < v_plat.size() - 1; i++) {
+
+		if (yPos == v_plat.at(i).getY()) {		// Kollisionsabfrage auf der yAchse
+
+			double platLinks = v_plat.at(i).getX();
+
+				if ((platLinks < figRechts && figRechts <= platLinks + 100) || (figLinks < platLinks + 100 && figLinks >= platLinks)) {		// Kollisionsabfrage auf der xAchse
+
+					return 1;
+				}
+
+		}
+		else if (i == v_plat.size() - 1 && yPos != v_plat.at(i).getY())
+		{
+			return 0;
+		}
+
+	}
+	
+}
+
 
 
 class GameWindow : public Gosu::Window {
 
 public:
+
+bool left;
+bool right;
+bool jump = 0;
+
+int gravity = 10;
+int distance = 0;		// Zählvariable für die Sprunghöhe
+int jumpHeight = 300;	// Festgelegte Sprunghöhe
+
+double xPos = windowWidth / 2;
+double yPos = windowHeight / 2;
+
+vector<platform> v_plat;
+
 
 	Gosu::Image bild;
 	GameWindow()
@@ -75,8 +127,11 @@ public:
 
 	void update() override {
 
+
 		left = input().down(Gosu::ButtonName::KB_LEFT);
 		right = input().down(Gosu::ButtonName::KB_RIGHT);
+
+		v_plat = createPlatforms(v_plat, windowHeight);
 
 		if (left == 1) {		// Bewegt die Spielfigur nach links
 			xPos -= 5;
@@ -90,7 +145,7 @@ public:
 			yPos += gravity;
 		}
 
-		if (yPos + bild.height() == windowHeight) { // Sprungvariable setzen
+		if (collision(v_plat, xPos, yPos) == 1 && jump == 0) { // Sprungvariable setzen
 			jump = true;
 		}
 
@@ -105,26 +160,29 @@ public:
 		}
 
 		if (xPos < 0) {			// Verlassen des Bildschirms nach links und dann wechsel nach rechts
-			xPos = windowWidth - (bild.width() / 2);
+			xPos = windowWidth + xPos;
 		}
 
-		if (xPos + bild.width() > windowWidth) {		// Verlassen des Bildschirms nach rechts und dann wechsel nach links
-			xPos = windowWidth - xPos - bild.width();
+		if (xPos > windowWidth) {		// Verlassen des Bildschirms nach rechts und dann wechsel nach links
+			xPos = xPos - windowWidth;
 		}
-
 		
 	}
 
 	void draw() override {
 
 		platform p;
-		p.setX(100);
-		p.setY(100);
 		bild.draw_rot(xPos, yPos, 0.0, 0.0, 0.5, 0.0);
+		for (int i = 0; i < v_plat.size() - 1; i++) {
+
+			p = v_plat.at(i);
+
 		graphics().draw_quad(p.getX(),p.getY(),Gosu::Color::GREEN,
 							p.getX() + p.getWidth(), p.getY(), Gosu::Color::GREEN,
 							p.getX(), p.getY() + p.getHeight(), Gosu::Color::GREEN,
 							p.getX() + p.getWidth(), p.getY() + p.getHeight(), Gosu::Color::GREEN, 0.0);
+
+		}
 		
 
 	}
@@ -133,6 +191,7 @@ public:
 
 int main()
 {
+	srand(time(NULL));
 	GameWindow window;
 	window.show();
 
