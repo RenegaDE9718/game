@@ -13,6 +13,8 @@ using namespace std;
 const int windowHeight = 1600;
 const int windowWidth = 700;
 
+bool nichtzeichnen=0;
+
 class platform {
 
 	double xPlat;
@@ -49,7 +51,6 @@ public:
 };
 
 vector<platform> createPlatforms(vector<platform> v_plat, int windowHeight) {
-
 	platform p;
 
 	if (v_plat.size() == 0) {		// Erzeugen der ersten Platform
@@ -59,7 +60,7 @@ vector<platform> createPlatforms(vector<platform> v_plat, int windowHeight) {
 		v_plat.push_back(p);
 	}
 
-	if (v_plat.back().getY() > 0) {		// Platform Vector auffüllen
+	if (v_plat.size() < windowHeight / 50) {		// Platform Vector auffüllen
 
 		p.setX(rand() % (windowWidth - 99));
 		p.setY(v_plat.back().getY() - (rand() % 200 + 50));
@@ -153,9 +154,18 @@ vector<platform> v_plat;
 
 		left = input().down(Gosu::ButtonName::KB_LEFT);
 		right = input().down(Gosu::ButtonName::KB_RIGHT);
+		nichtzeichnen = 1;
+
+		if (yPos < (windowHeight / 2)) {
+
+			v_plat = moveScreen(v_plat, speed);
+			yPos += speed;
+
+		}
 
 		v_plat = createPlatforms(v_plat, windowHeight);
 
+		nichtzeichnen = 0;
 		if (left == 1) {		// Bewegt die Spielfigur nach links
 			xPos -= 7;
 		}
@@ -190,37 +200,24 @@ vector<platform> v_plat;
 		if (xPos > windowWidth) {		// Verlassen des Bildschirms nach rechts und dann wechsel nach links
 			xPos = xPos - windowWidth;
 		}
-
-		if (yPos < (windowHeight / 2)) {
-
-
-			/*if (yPos < (windowHeight * (3 / 8))) {
-
-				speed = 3;
-
-				if (yPos < (windowHeight * (1 / 4))) {
-
-					speed = 5;
-				}
-			}*/
-
-			v_plat = moveScreen(v_plat,speed);
-			yPos += speed;
-
-		}
 		
 	}
 
 	void draw() override {
-
+		
 		platform p;
 		bild.draw_rot(xPos, yPos, 0.0, 0.0, 0.5, 0.0);
 
-		for (int i = 0; i < v_plat.size() - 1; i++) {
+		if (nichtzeichnen == 0)
+		{
 
-			p = v_plat.at(i);
-			
-			bild_platform.draw_rot(p.getX(), p.getY(), 0.0, 0.0, 0.0, 0.0, 1.0, 1.0);
+			for (int i = 0; i < v_plat.size() - 1; i++) {
+
+				p = v_plat.at(i);
+
+				bild_platform.draw_rot(p.getX(), p.getY(), 0.0, 0.0, 0.0, 0.0, 1.0, 1.0);
+
+			}
 		}
 	}
 };
