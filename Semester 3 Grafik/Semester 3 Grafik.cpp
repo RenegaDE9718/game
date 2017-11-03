@@ -118,11 +118,11 @@ vector<platform> v_plat;
 
 
 	Gosu::Image bild;
-	Gosu::Sample beep;
+	Gosu::Sample Beep;
 	GameWindow()
 		: Window(windowWidth, windowHeight)
 		, bild("placeholder.png")
-		, beep("Beep.wav")
+		, Beep("Beep.wav")
 	{
 		set_caption("Gosu Tutorial Game mit Git");
 	}
@@ -149,7 +149,7 @@ vector<platform> v_plat;
 
 		if (collision(v_plat, xPos, yPos) == 1 && jump == 0) { // Sprungvariable setzen
 			jump = true;
-			beep.play(1, 0.5, 0);
+			Beep.play(1, 0.5, 0);
 		}
 
 		if (jump == 1 && jumpHeight > distance) {	// Funktion für den Sprung der Spielfigur
