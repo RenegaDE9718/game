@@ -11,7 +11,7 @@ using namespace std;
 
 
 const int windowHeight = 1600;
-const int windowWidth = 800;
+const int windowWidth = 700;
 
 class platform {
 
@@ -52,20 +52,30 @@ vector<platform> createPlatforms(vector<platform> v_plat, int windowHeight) {
 
 	platform p;
 
-	if (v_plat.size() == 0) {
+	if (v_plat.size() == 0) {		// Erzeugen der ersten Platform
 
 		p.setX(windowWidth / 2 - 50);
 		p.setY(windowHeight - 10);
 		v_plat.push_back(p);
 	}
 
-	if (v_plat.size() < 10) {
+	if (v_plat.back().getY() > 0) {		// Platform Vector auffüllen
 
-		p.setX(rand() % 701);
+		p.setX(rand() % (windowWidth - 99));
 		p.setY(v_plat.back().getY() - (rand() % 200 + 50));
 
 		v_plat.push_back(p);
 
+	}
+
+	if (v_plat.front().getY() > windowHeight) {		// löschen der Platformen außerhalb des Bildschirms
+
+		for (int i = 0; i < v_plat.size() - 2; i++)
+		{
+			v_plat.at(i) = v_plat.at(i + 1);
+		}
+
+		v_plat.pop_back();
 	}
 
 	return v_plat;
@@ -88,12 +98,20 @@ bool collision(vector<platform> v_plat, double xPos, double yPos) {
 
 					return 1;
 				}
-
 		}
-
 	}
 
-	return 0;
+	return 0;	
+}
+
+vector<platform>moveScreen(vector<platform> v_plat, int speed) {
+
+		for (int i = 0; i < v_plat.size() - 1; i++)
+		{
+			v_plat.at(i).setY((v_plat.at(i).getY() + speed));
+		}
+
+		return v_plat;
 	
 }
 
@@ -107,12 +125,13 @@ bool left;
 bool right;
 bool jump = 0;
 
-int gravity = 10;
+int speed = 8;				//Geschwindigkeit 
+int gravity = speed;
 int distance = 0;		// Zählvariable für die Sprunghöhe
 int jumpHeight = 300;	// Festgelegte Sprunghöhe
 
 double xPos = windowWidth / 2;
-double yPos = windowHeight / 2;
+double yPos = 1200;
 
 vector<platform> v_plat;
 
@@ -136,11 +155,11 @@ vector<platform> v_plat;
 		v_plat = createPlatforms(v_plat, windowHeight);
 
 		if (left == 1) {		// Bewegt die Spielfigur nach links
-			xPos -= 5;
+			xPos -= 7;
 		}
 
 		if (right == 1) {		// Bewegt die Spielfigur nach rechts
-			xPos += 5;
+			xPos += 7;
 		}
 
 		if (yPos + bild.height() <= windowHeight && jump == 0) { // Schwerkraft, wirkt erst nach erreichen der maximalen Sprunghöhe
@@ -153,8 +172,8 @@ vector<platform> v_plat;
 		}
 
 		if (jump == 1 && jumpHeight > distance) {	// Funktion für den Sprung der Spielfigur
-			yPos -= 10;
-			distance += 10;
+			yPos -= speed;
+			distance += speed;
 		}
 		else
 		{
@@ -169,6 +188,24 @@ vector<platform> v_plat;
 		if (xPos > windowWidth) {		// Verlassen des Bildschirms nach rechts und dann wechsel nach links
 			xPos = xPos - windowWidth;
 		}
+
+		if (yPos < (windowHeight / 2)) {
+
+
+			/*if (yPos < (windowHeight * (3 / 8))) {
+
+				speed = 3;
+
+				if (yPos < (windowHeight * (1 / 4))) {
+
+					speed = 5;
+				}
+			}*/
+
+			v_plat = moveScreen(v_plat,speed);
+			yPos += speed;
+
+		}
 		
 	}
 
@@ -176,18 +213,21 @@ vector<platform> v_plat;
 
 		platform p;
 		bild.draw_rot(xPos, yPos, 0.0, 0.0, 0.5, 0.0);
+
 		for (int i = 0; i < v_plat.size() - 1; i++) {
 
 			p = v_plat.at(i);
 
-		graphics().draw_quad(p.getX(),p.getY(),Gosu::Color::GREEN,
-							p.getX() + p.getWidth(), p.getY(), Gosu::Color::GREEN,
-							p.getX(), p.getY() + p.getHeight(), Gosu::Color::GREEN,
-							p.getX() + p.getWidth(), p.getY() + p.getHeight(), Gosu::Color::GREEN, 0.0);
 
-		}
-		
+			
 
+				graphics().draw_quad(p.getX(), p.getY(), Gosu::Color::GREEN,
+					p.getX() + p.getWidth(), p.getY(), Gosu::Color::GREEN,
+					p.getX(), p.getY() + p.getHeight(), Gosu::Color::GREEN,
+					p.getX() + p.getWidth(), p.getY() + p.getHeight(), Gosu::Color::GREEN, 0.0);
+
+
+			}
 	}
 };
 
