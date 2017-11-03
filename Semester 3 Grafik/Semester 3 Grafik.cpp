@@ -107,9 +107,12 @@ bool left;
 bool right;
 bool jump = 0;
 
-int gravity = 10;
+int gravity = 7;
 int distance = 0;		// Zählvariable für die Sprunghöhe
 int jumpHeight = 300;	// Festgelegte Sprunghöhe
+
+double accel1 = -0.2;
+double speed = 10;
 
 double xPos = windowWidth / 2;
 double yPos = windowHeight / 2;
@@ -136,11 +139,11 @@ vector<platform> v_plat;
 		v_plat = createPlatforms(v_plat, windowHeight);
 
 		if (left == 1) {		// Bewegt die Spielfigur nach links
-			xPos -= 5;
+			xPos -= 10;
 		}
 
 		if (right == 1) {		// Bewegt die Spielfigur nach rechts
-			xPos += 5;
+			xPos += 10;
 		}
 
 		if (yPos + bild.height() <= windowHeight && jump == 0) { // Schwerkraft, wirkt erst nach erreichen der maximalen Sprunghöhe
@@ -153,8 +156,16 @@ vector<platform> v_plat;
 		}
 
 		if (jump == 1 && jumpHeight > distance) {	// Funktion für den Sprung der Spielfigur
-			yPos -= 10;
-			distance += 10;
+
+			if (speed > 0) {
+				yPos -= speed;
+				distance += speed;
+				speed += accel1;
+			}
+			else {
+				jump = false;
+				speed = 10;
+			}
 		}
 		else
 		{
