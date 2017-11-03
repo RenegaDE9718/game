@@ -7,45 +7,43 @@
 'Semester 3 Grafik.exe' (Win32): Loaded 'C:\Windows\SysWOW64\gdi32.dll'. Cannot find or open the PDB file.
 'Semester 3 Grafik.exe' (Win32): Loaded 'C:\Windows\SysWOW64\gdi32full.dll'. Cannot find or open the PDB file.
 'Semester 3 Grafik.exe' (Win32): Loaded 'C:\Windows\SysWOW64\msvcp_win.dll'. Cannot find or open the PDB file.
+'Semester 3 Grafik.exe' (Win32): Loaded 'C:\Windows\SysWOW64\ucrtbase.dll'. Cannot find or open the PDB file.
 'Semester 3 Grafik.exe' (Win32): Loaded 'C:\Users\leonr\Documents\Visual Studio 2015\Engine\lib\SDL2.dll'. Module was built without symbols.
+'Semester 3 Grafik.exe' (Win32): Loaded 'C:\Windows\SysWOW64\opengl32.dll'. Cannot find or open the PDB file.
 'Semester 3 Grafik.exe' (Win32): Loaded 'C:\Windows\SysWOW64\advapi32.dll'. Cannot find or open the PDB file.
 'Semester 3 Grafik.exe' (Win32): Loaded 'C:\Windows\SysWOW64\msvcrt.dll'. Cannot find or open the PDB file.
 'Semester 3 Grafik.exe' (Win32): Loaded 'C:\Users\leonr\Documents\Visual Studio 2015\Engine\lib\OpenAL32.dll'. Module was built without symbols.
-'Semester 3 Grafik.exe' (Win32): Loaded 'C:\Windows\SysWOW64\ole32.dll'. Cannot find or open the PDB file.
 'Semester 3 Grafik.exe' (Win32): Loaded 'C:\Windows\SysWOW64\sechost.dll'. Cannot find or open the PDB file.
-'Semester 3 Grafik.exe' (Win32): Loaded 'C:\Windows\SysWOW64\combase.dll'. Cannot find or open the PDB file.
+'Semester 3 Grafik.exe' (Win32): Loaded 'C:\Windows\SysWOW64\ole32.dll'. Cannot find or open the PDB file.
+'Semester 3 Grafik.exe' (Win32): Loaded 'C:\Windows\SysWOW64\msvcrt.dll'. Cannot find or open the PDB file.
+'Semester 3 Grafik.exe' (Win32): Unloaded 'C:\Windows\SysWOW64\msvcrt.dll'
 'Semester 3 Grafik.exe' (Win32): Loaded 'C:\Windows\SysWOW64\rpcrt4.dll'. Cannot find or open the PDB file.
-'Semester 3 Grafik.exe' (Win32): Loaded 'C:\Windows\SysWOW64\ucrtbase.dll'. Cannot find or open the PDB file.
-'Semester 3 Grafik.exe' (Win32): Loaded 'C:\Windows\SysWOW64\rpcrt4.dll'. Cannot find or open the PDB file.
-'Semester 3 Grafik.exe' (Win32): Unloaded 'C:\Windows\SysWOW64\rpcrt4.dll'
-'Semester 3 Grafik.exe' (Win32): Loaded 'C:\Windows\SysWOW64\opengl32.dll'. Cannot find or open the PDB file.
-'Semester 3 Grafik.exe' (Win32): Loaded 'C:\Windows\SysWOW64\ucrtbase.dll'. Cannot find or open the PDB file.
-'Semester 3 Grafik.exe' (Win32): Loaded 'C:\Windows\SysWOW64\bcryptprimitives.dll'. Cannot find or open the PDB file.
-'Semester 3 Grafik.exe' (Win32): Unloaded 'C:\Windows\SysWOW64\ucrtbase.dll'
 'Semester 3 Grafik.exe' (Win32): Loaded 'C:\Windows\SysWOW64\sspicli.dll'. Cannot find or open the PDB file.
 'Semester 3 Grafik.exe' (Win32): Loaded 'C:\Windows\SysWOW64\cryptbase.dll'. Cannot find or open the PDB file.
+'Semester 3 Grafik.exe' (Win32): Loaded 'C:\Windows\SysWOW64\combase.dll'. Cannot find or open the PDB file.
+'Semester 3 Grafik.exe' (Win32): Loaded 'C:\Windows\SysWOW64\bcryptprimitives.dll'. Cannot find or open the PDB file.
 'Semester 3 Grafik.exe' (Win32): Loaded 'C:\Windows\SysWOW64\shell32.dll'. Cannot find or open the PDB file.
-'Semester 3 Grafik.exe' (Win32): Loaded 'C:\Windows\SysWOW64\cfgmgr32.dll'. Cannot find or open the PDB file.
+'Semester 3 Grafik.exe' (Win32): Loaded 'C:\Windows\SysWOW64\winmm.dll'. Cannot find or open the PDB file.
 'Semester 3 Grafik.exe' (Win32): Loaded 'C:\Windows\SysWOW64\imm32.dll'. Cannot find or open the PDB file.
 'Semester 3 Grafik.exe' (Win32): Loaded 'C:\Windows\SysWOW64\oleaut32.dll'. Cannot find or open the PDB file.
+'Semester 3 Grafik.exe' (Win32): Loaded 'C:\Windows\SysWOW64\cfgmgr32.dll'. Cannot find or open the PDB file.
 'Semester 3 Grafik.exe' (Win32): Loaded 'C:\Windows\SysWOW64\SHCore.dll'. Cannot find or open the PDB file.
+'Semester 3 Grafik.exe' (Win32): Loaded 'C:\Windows\SysWOW64\glu32.dll'. Cannot find or open the PDB file.
 'Semester 3 Grafik.exe' (Win32): Loaded 'C:\Windows\SysWOW64\windows.storage.dll'. Cannot find or open the PDB file.
 'Semester 3 Grafik.exe' (Win32): Loaded 'C:\Windows\SysWOW64\shlwapi.dll'. Cannot find or open the PDB file.
 'Semester 3 Grafik.exe' (Win32): Loaded 'C:\Users\leonr\Documents\Visual Studio 2015\Engine\lib\libmpg123.dll'. Cannot find or open the PDB file.
-'Semester 3 Grafik.exe' (Win32): Loaded 'C:\Windows\SysWOW64\kernel.appcore.dll'. Cannot find or open the PDB file.
-'Semester 3 Grafik.exe' (Win32): Loaded 'C:\Windows\SysWOW64\powrprof.dll'. Cannot find or open the PDB file.
-'Semester 3 Grafik.exe' (Win32): Loaded 'C:\Windows\SysWOW64\profapi.dll'. Cannot find or open the PDB file.
-'Semester 3 Grafik.exe' (Win32): Loaded 'C:\Windows\SysWOW64\glu32.dll'. Cannot find or open the PDB file.
-'Semester 3 Grafik.exe' (Win32): Loaded 'C:\Windows\SysWOW64\version.dll'. Cannot find or open the PDB file.
-'Semester 3 Grafik.exe' (Win32): Loaded 'C:\Windows\SysWOW64\winmm.dll'. Cannot find or open the PDB file.
-'Semester 3 Grafik.exe' (Win32): Loaded 'C:\Windows\SysWOW64\winmmbase.dll'. Cannot find or open the PDB file.
 'Semester 3 Grafik.exe' (Win32): Loaded 'C:\Windows\SysWOW64\winmmbase.dll'. Cannot find or open the PDB file.
 'Semester 3 Grafik.exe' (Win32): Unloaded 'C:\Windows\SysWOW64\winmmbase.dll'
+'Semester 3 Grafik.exe' (Win32): Loaded 'C:\Windows\SysWOW64\kernel.appcore.dll'. Cannot find or open the PDB file.
+'Semester 3 Grafik.exe' (Win32): Loaded 'C:\Windows\SysWOW64\powrprof.dll'. Cannot find or open the PDB file.
+'Semester 3 Grafik.exe' (Win32): Loaded 'C:\Windows\SysWOW64\winmmbase.dll'. Cannot find or open the PDB file.
+'Semester 3 Grafik.exe' (Win32): Loaded 'C:\Windows\SysWOW64\version.dll'. Cannot find or open the PDB file.
+'Semester 3 Grafik.exe' (Win32): Loaded 'C:\Windows\SysWOW64\profapi.dll'. Cannot find or open the PDB file.
 'Semester 3 Grafik.exe' (Win32): Loaded 'C:\Windows\SysWOW64\uxtheme.dll'. Cannot find or open the PDB file.
 'Semester 3 Grafik.exe' (Win32): Loaded 'C:\Windows\SysWOW64\msctf.dll'. Cannot find or open the PDB file.
 'Semester 3 Grafik.exe' (Win32): Loaded 'C:\Program Files (x86)\Common Files\microsoft shared\ink\tiptsf.dll'. Cannot find or open the PDB file.
 'Semester 3 Grafik.exe' (Win32): Loaded 'C:\Windows\SysWOW64\dwmapi.dll'. Cannot find or open the PDB file.
-onecore\com\combase\objact\objact.cxx(812)\combase.dll!76721B90: (caller: 7672093B) ReturnHr(1) tid(45d0) 800401F0 CoInitialize wurde nicht aufgerufen.
+onecore\com\combase\objact\objact.cxx(812)\combase.dll!76721B90: (caller: 7672093B) ReturnHr(1) tid(42b0) 800401F0 CoInitialize wurde nicht aufgerufen.
 'Semester 3 Grafik.exe' (Win32): Loaded 'C:\Windows\System32\DriverStore\FileRepository\ki124299.inf_amd64_cda808e1cf7811be\ig9icd32.dll'. Cannot find or open the PDB file.
 'Semester 3 Grafik.exe' (Win32): Loaded 'C:\Windows\SysWOW64\dxgi.dll'. Cannot find or open the PDB file.
 'Semester 3 Grafik.exe' (Win32): Loaded 'C:\Windows\SysWOW64\wtsapi32.dll'. Cannot find or open the PDB file.
@@ -54,6 +52,8 @@ onecore\com\combase\objact\objact.cxx(812)\combase.dll!76721B90: (caller: 767209
 'Semester 3 Grafik.exe' (Win32): Loaded 'C:\Windows\System32\DriverStore\FileRepository\ki124299.inf_amd64_cda808e1cf7811be\igc32.dll'. Cannot find or open the PDB file.
 'Semester 3 Grafik.exe' (Win32): Loaded 'C:\Windows\SysWOW64\clbcatq.dll'. Cannot find or open the PDB file.
 'Semester 3 Grafik.exe' (Win32): Loaded 'C:\Windows\SysWOW64\dinput8.dll'. Cannot find or open the PDB file.
+'Semester 3 Grafik.exe' (Win32): Unloaded 'C:\Windows\SysWOW64\dinput8.dll'
+'Semester 3 Grafik.exe' (Win32): Loaded 'C:\Windows\SysWOW64\dinput8.dll'. Cannot find or open the PDB file.
 'Semester 3 Grafik.exe' (Win32): Loaded 'C:\Windows\SysWOW64\hid.dll'. Cannot find or open the PDB file.
 'Semester 3 Grafik.exe' (Win32): Loaded 'C:\Windows\SysWOW64\setupapi.dll'. Cannot find or open the PDB file.
 'Semester 3 Grafik.exe' (Win32): Loaded 'C:\Windows\SysWOW64\InputHost.dll'. Cannot find or open the PDB file.
@@ -61,12 +61,12 @@ onecore\com\combase\objact\objact.cxx(812)\combase.dll!76721B90: (caller: 767209
 'Semester 3 Grafik.exe' (Win32): Loaded 'C:\Windows\SysWOW64\CoreUIComponents.dll'. Cannot find or open the PDB file.
 'Semester 3 Grafik.exe' (Win32): Loaded 'C:\Windows\SysWOW64\ntmarta.dll'. Cannot find or open the PDB file.
 'Semester 3 Grafik.exe' (Win32): Loaded 'C:\Windows\SysWOW64\WinTypes.dll'. Cannot find or open the PDB file.
-'Semester 3 Grafik.exe' (Win32): Loaded 'C:\Windows\SysWOW64\WinTypes.dll'. Cannot find or open the PDB file.
-'Semester 3 Grafik.exe' (Win32): Unloaded 'C:\Windows\SysWOW64\WinTypes.dll'
 'Semester 3 Grafik.exe' (Win32): Loaded 'C:\Windows\SysWOW64\devobj.dll'. Cannot find or open the PDB file.
 'Semester 3 Grafik.exe' (Win32): Loaded 'C:\Windows\SysWOW64\wintrust.dll'. Cannot find or open the PDB file.
 'Semester 3 Grafik.exe' (Win32): Loaded 'C:\Windows\SysWOW64\msasn1.dll'. Cannot find or open the PDB file.
 'Semester 3 Grafik.exe' (Win32): Loaded 'C:\Windows\SysWOW64\crypt32.dll'. Cannot find or open the PDB file.
+'Semester 3 Grafik.exe' (Win32): Loaded 'C:\Windows\SysWOW64\XInput1_4.dll'. Cannot find or open the PDB file.
+'Semester 3 Grafik.exe' (Win32): Unloaded 'C:\Windows\SysWOW64\XInput1_4.dll'
 'Semester 3 Grafik.exe' (Win32): Loaded 'C:\Windows\SysWOW64\XInput1_4.dll'. Cannot find or open the PDB file.
 'Semester 3 Grafik.exe' (Win32): Loaded 'C:\Windows\SysWOW64\MMDevAPI.dll'. Cannot find or open the PDB file.
 'Semester 3 Grafik.exe' (Win32): Loaded 'C:\Windows\SysWOW64\propsys.dll'. Cannot find or open the PDB file.
@@ -78,36 +78,36 @@ onecore\com\combase\objact\objact.cxx(812)\combase.dll!76721B90: (caller: 767209
 'Semester 3 Grafik.exe' (Win32): Loaded 'C:\Users\leonr\Documents\Visual Studio 2015\Engine\lib\libsndfile.dll'. Module was built without symbols.
 'Semester 3 Grafik.exe' (Win32): Loaded 'C:\Windows\SysWOW64\TextInputFramework.dll'. Cannot find or open the PDB file.
 'Semester 3 Grafik.exe' (Win32): Loaded 'C:\Windows\SysWOW64\UIAutomationCore.dll'. Cannot find or open the PDB file.
-onecore\com\combase\inc\comcataloghelpers.hpp(67)\combase.dll!76708550: (caller: 767082E0) ReturnHr(2) tid(1f70) 80004002 Schnittstelle nicht unterstützt
+onecore\com\combase\inc\comcataloghelpers.hpp(67)\combase.dll!76708550: (caller: 767082E0) ReturnHr(2) tid(41ec) 80004002 Schnittstelle nicht unterstützt
 'Semester 3 Grafik.exe' (Win32): Loaded 'C:\Windows\SysWOW64\sxs.dll'. Cannot find or open the PDB file.
-mincore\com\oleaut32\dispatch\ups.cpp(2125)\OLEAUT32.dll!75F2234F: (caller: 75F21EF1) ReturnHr(1) tid(45d0) 8002801D Bibliothek nicht registriert.
-mincore\com\oleaut32\dispatch\ups.cpp(2125)\OLEAUT32.dll!75F2234F: (caller: 75F21EF1) ReturnHr(2) tid(45d0) 8002801D Bibliothek nicht registriert.
+mincore\com\oleaut32\dispatch\ups.cpp(2125)\OLEAUT32.dll!75F2234F: (caller: 75F21EF1) ReturnHr(1) tid(42b0) 8002801D Bibliothek nicht registriert.
+mincore\com\oleaut32\dispatch\ups.cpp(2125)\OLEAUT32.dll!75F2234F: (caller: 75F21EF1) ReturnHr(2) tid(42b0) 8002801D Bibliothek nicht registriert.
 'Semester 3 Grafik.exe' (Win32): Loaded 'C:\Windows\SysWOW64\oleacc.dll'. Cannot find or open the PDB file.
 'Semester 3 Grafik.exe' (Win32): Loaded 'C:\Windows\SysWOW64\twinapi.dll'. Cannot find or open the PDB file.
 'Semester 3 Grafik.exe' (Win32): Loaded 'C:\Windows\SysWOW64\twinapi.appcore.dll'. Cannot find or open the PDB file.
 'Semester 3 Grafik.exe' (Win32): Loaded 'C:\Windows\SysWOW64\rmclient.dll'. Cannot find or open the PDB file.
 'Semester 3 Grafik.exe' (Win32): Loaded 'C:\Windows\SysWOW64\bcrypt.dll'. Cannot find or open the PDB file.
-The thread 0x11dc has exited with code 0 (0x0).
+The thread 0x3470 has exited with code 0 (0x0).
 'Semester 3 Grafik.exe' (Win32): Unloaded 'C:\Windows\SysWOW64\XInput1_4.dll'
-The thread 0x3e04 has exited with code 0 (0x0).
-The thread 0x1f70 has exited with code 0 (0x0).
+The thread 0x2354 has exited with code 0 (0x0).
+The thread 0x41ec has exited with code 0 (0x0).
 'Semester 3 Grafik.exe' (Win32): Unloaded 'C:\Windows\SysWOW64\msasn1.dll'
 'Semester 3 Grafik.exe' (Win32): Unloaded 'C:\Windows\SysWOW64\crypt32.dll'
 'Semester 3 Grafik.exe' (Win32): Unloaded 'C:\Windows\SysWOW64\wintrust.dll'
 'Semester 3 Grafik.exe' (Win32): Unloaded 'C:\Windows\SysWOW64\setupapi.dll'
 'Semester 3 Grafik.exe' (Win32): Unloaded 'C:\Windows\SysWOW64\hid.dll'
 'Semester 3 Grafik.exe' (Win32): Unloaded 'C:\Windows\SysWOW64\dinput8.dll'
-The thread 0x113c has exited with code 0 (0x0).
-The thread 0x2ff0 has exited with code 0 (0x0).
-The thread 0x45c8 has exited with code 0 (0x0).
-The thread 0x2fc0 has exited with code 0 (0x0).
-The thread 0xac8 has exited with code 0 (0x0).
-The thread 0x5b0 has exited with code 0 (0x0).
-The thread 0x3d44 has exited with code 0 (0x0).
-The thread 0x2f74 has exited with code 0 (0x0).
-The thread 0x28b0 has exited with code 0 (0x0).
-The thread 0x47e0 has exited with code 0 (0x0).
-The thread 0x3e60 has exited with code 0 (0x0).
-The thread 0x3d80 has exited with code 0 (0x0).
-The thread 0x451c has exited with code 0 (0x0).
-The program '[7704] Semester 3 Grafik.exe' has exited with code 0 (0x0).
+The thread 0x2ca0 has exited with code 0 (0x0).
+The thread 0x3c2c has exited with code 0 (0x0).
+The thread 0x2a10 has exited with code 0 (0x0).
+The thread 0x2b8c has exited with code 0 (0x0).
+The thread 0x26f0 has exited with code 0 (0x0).
+The thread 0x32b8 has exited with code 0 (0x0).
+The thread 0x27d4 has exited with code 0 (0x0).
+The thread 0x18f4 has exited with code 0 (0x0).
+The thread 0x41fc has exited with code 0 (0x0).
+The thread 0x1e58 has exited with code 0 (0x0).
+The thread 0x34a8 has exited with code 0 (0x0).
+The thread 0x36ac has exited with code 0 (0x0).
+The thread 0x36d0 has exited with code 0 (0x0).
+The program '[16600] Semester 3 Grafik.exe' has exited with code 0 (0x0).

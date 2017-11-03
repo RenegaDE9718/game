@@ -10,7 +10,7 @@
 using namespace std;
 
 
-const int windowHeight = GetSystemMetrics(SM_CYSCREEN);
+const int windowHeight = 1600;
 const int windowWidth = 800;
 
 class platform {
@@ -80,7 +80,7 @@ bool collision(vector<platform> v_plat, double xPos, double yPos) {
 
 		double mem = v_plat.at(i).getY();
 
-		if (yPos == mem || yPos > mem && yPos < mem + 10) {		// Kollisionsabfrage auf der yAchse
+		if (yPos +90 == mem || yPos+90 > mem && yPos+90 < mem + 10) {		// Kollisionsabfrage auf der yAchse
 
 			double platLinks = v_plat.at(i).getX();
 
