@@ -137,10 +137,12 @@ vector<platform> v_plat;
 
 
 	Gosu::Image bild;
+	Gosu::Image bild_platform;
 	Gosu::Sample Beep;
 	GameWindow()
 		: Window(windowWidth, windowHeight)
 		, bild("placeholder.png")
+		, bild_platform("platform.png")
 		, Beep("Beep.wav")
 	{
 		set_caption("Gosu Tutorial Game mit Git");
@@ -217,17 +219,9 @@ vector<platform> v_plat;
 		for (int i = 0; i < v_plat.size() - 1; i++) {
 
 			p = v_plat.at(i);
-
-
 			
-
-				graphics().draw_quad(p.getX(), p.getY(), Gosu::Color::GREEN,
-					p.getX() + p.getWidth(), p.getY(), Gosu::Color::GREEN,
-					p.getX(), p.getY() + p.getHeight(), Gosu::Color::GREEN,
-					p.getX() + p.getWidth(), p.getY() + p.getHeight(), Gosu::Color::GREEN, 0.0);
-
-
-			}
+			bild_platform.draw_rot(p.getX(), p.getY(), 0.0, 0.0, 0.0, 0.0, 1.0, 1.0);
+		}
 	}
 };
 
