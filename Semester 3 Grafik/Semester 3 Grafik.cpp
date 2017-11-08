@@ -5,6 +5,7 @@
 #include <windows.h>
 #include <vector>
 #include <time.h>
+#include <string.h>
 #include <Gosu/Gosu.hpp>
 #include <Gosu/AutoLink.hpp>
 using namespace std;
@@ -132,6 +133,7 @@ public:
 	int gravity = speed;
 	int distance = 0;		// Zählvariable für die Sprunghöhe
 	int jumpHeight = 300;	// Festgelegte Sprunghöhe
+	int score = 0;
 
 	double xPos = windowWidth / 2;
 	double yPos = 1200;
@@ -142,6 +144,8 @@ public:
 	Gosu::Image bild;
 	Gosu::Image bild_platform;
 	Gosu::Sample Beep;
+	Gosu::Font test = 50;
+
 	GameWindow()
 		: Window(windowWidth, windowHeight)
 		, bild("placeholder.png")
@@ -193,6 +197,7 @@ public:
 		{
 			jump = false;
 			distance = 0;
+			
 		}
 
 		if (xPos < 0) {			// Verlassen des Bildschirms nach links und dann wechsel nach rechts
@@ -207,6 +212,8 @@ public:
 
 	void draw() override {
 
+		test.draw("score:", windowWidth - 200, 0, 0.0, 1.0, 1.0, Gosu::Color::WHITE);
+		test.draw(to_string(score), windowWidth - 200, 50, 0.0, 1.0, 1.0, Gosu::Color::WHITE);
 		platform p;
 		bild.draw_rot(xPos, yPos, 0.0, 0.0, 0.5, 0.0);
 
