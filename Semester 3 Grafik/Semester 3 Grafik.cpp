@@ -13,7 +13,7 @@ using namespace std;
 const int windowHeight = 1600;
 const int windowWidth = 700;
 
-bool nichtzeichnen=0;
+bool nichtzeichnen = 0;
 
 class platform {
 
@@ -93,29 +93,29 @@ bool collision(vector<platform> v_plat, double xPos, double yPos) {
 
 		double mem = v_plat.at(i).getY();
 
-		if (yPos +90 == mem || yPos+90 > mem && yPos+90 < mem + 10) {		// Kollisionsabfrage auf der yAchse
+		if (yPos + 90 == mem || yPos + 90 > mem && yPos + 90 < mem + 10) {		// Kollisionsabfrage auf der yAchse
 
 			double platLinks = v_plat.at(i).getX();
 
-				if ((platLinks < figRechts && figRechts <= platLinks + 100) || (figLinks < platLinks + 100 && figLinks >= platLinks)) {		// Kollisionsabfrage auf der xAchse
+			if ((platLinks < figRechts && figRechts <= platLinks + 100) || (figLinks < platLinks + 100 && figLinks >= platLinks)) {		// Kollisionsabfrage auf der xAchse
 
-					return 1;
-				}
+				return 1;
+			}
 		}
 	}
 
-	return 0;	
+	return 0;
 }
 
 vector<platform>moveScreen(vector<platform> v_plat, int speed) {
 
-		for (int i = 0; i < v_plat.size() - 1; i++)
-		{
-			v_plat.at(i).setY((v_plat.at(i).getY() + speed));
-		}
+	for (int i = 0; i < v_plat.size() - 1; i++)
+	{
+		v_plat.at(i).setY((v_plat.at(i).getY() + speed));
+	}
 
-		return v_plat;
-	
+	return v_plat;
+
 }
 
 
@@ -124,19 +124,19 @@ class GameWindow : public Gosu::Window {
 
 public:
 
-bool left;
-bool right;
-bool jump = 0;
+	bool left;
+	bool right;
+	bool jump = 0;
 
-int speed = 8;				//Geschwindigkeit 
-int gravity = speed;
-int distance = 0;		// Zählvariable für die Sprunghöhe
-int jumpHeight = 300;	// Festgelegte Sprunghöhe
+	int speed = 8;				//Geschwindigkeit 
+	int gravity = speed;
+	int distance = 0;		// Zählvariable für die Sprunghöhe
+	int jumpHeight = 300;	// Festgelegte Sprunghöhe
 
-double xPos = windowWidth / 2;
-double yPos = 1200;
+	double xPos = windowWidth / 2;
+	double yPos = 1200;
 
-vector<platform> v_plat;
+	vector<platform> v_plat;
 
 
 	Gosu::Image bild;
@@ -202,11 +202,11 @@ vector<platform> v_plat;
 		if (xPos > windowWidth) {		// Verlassen des Bildschirms nach rechts und dann wechsel nach links
 			xPos = xPos - windowWidth;
 		}
-		
+
 	}
 
 	void draw() override {
-		
+
 		platform p;
 		bild.draw_rot(xPos, yPos, 0.0, 0.0, 0.5, 0.0);
 
