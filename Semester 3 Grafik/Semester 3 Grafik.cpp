@@ -63,9 +63,10 @@ vector<platform> createPlatforms(vector<platform> v_plat, int windowHeight) {
 	if (v_plat.size() < windowHeight / 50) {		// Platform Vector auffüllen
 
 		p.setX(rand() % (windowWidth - 99));
-		p.setY(v_plat.back().getY() - (rand() % 200 + 50));
+		p.setY((v_plat.back().getY() - (rand() % 200 + 50)));
 
 		v_plat.push_back(p);
+
 
 	}
 
@@ -76,6 +77,7 @@ vector<platform> createPlatforms(vector<platform> v_plat, int windowHeight) {
 			v_plat.at(i) = v_plat.at(i + 1);
 		}
 
+		v_plat.pop_back();
 		v_plat.pop_back();
 	}
 
