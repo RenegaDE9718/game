@@ -125,6 +125,7 @@ public:
 
 	bool left;
 	bool right;
+	bool m;
 	bool jump = 0;
 	bool gameOver = 0;
 	bool dir = 0;
@@ -134,6 +135,7 @@ public:
 	int gravity = speed;
 	int distance = 0;		// Zählvariable für die Sprunghöhe
 	int jumpHeight = 300;	// Festgelegte Sprunghöhe
+	int player = 0;
 	
 	double xPos = windowWidth / 2;
 	double yPos = 1200;
@@ -146,6 +148,8 @@ public:
 
 	Gosu::Image bild1;
 	Gosu::Image bild2;
+	Gosu::Image mario1;
+	Gosu::Image mario2;
 	Gosu::Image gameover;
 	Gosu::Image easteregg;
 	Gosu::Image bild_platform;
@@ -156,6 +160,8 @@ public:
 		: Window(windowWidth, windowHeight)
 		, bild1("R_player.png")
 		, bild2("L_player.png")
+		, mario1("r_Mario.png")
+		, mario2("l_Mario.png")
 		, easteregg("lippe.png")
 		, gameover("Gameover.png")
 		, bild_platform("platform.png")
@@ -168,6 +174,7 @@ public:
 
 		left = input().down(Gosu::ButtonName::KB_LEFT);
 		right = input().down(Gosu::ButtonName::KB_RIGHT);
+		m = input().down(Gosu::ButtonName::KB_M);
 
 		v_plat = createPlatforms(v_plat, windowHeight);
 
@@ -216,7 +223,7 @@ public:
 			xPos = xPos - windowWidth;
 		}
 
-		if ((yPos + bild1.height()) > (v_plat.at(0).getY() + 10)) {
+		if ((yPos + bild1.height()) > (v_plat.at(0).getY() + 10)) {		//Fällt der Spieler auf den Boden ist das Spiel vorbei, GAMEOVER wird angezeigt
 			gameOver = 1;
 		}
 
@@ -234,8 +241,10 @@ public:
 		if (xLippe == 0) {
 			lippe = 0;
 			xLippe = windowWidth;
-		}			
+		}	
 
+		if (m == 1)
+			player = 1;
 	}
 
 	void draw() override {
@@ -245,14 +254,30 @@ public:
 		
 		platform p;
 
-		if (dir == 1) {
+		if (player == 0) {
 
-			bild2.draw_rot(xPos, yPos, 1.0, 0.0, 0.5, 0.0);
-		}
-		if (dir == 0) {
+			if (dir == 1) {
 
-			bild1.draw_rot(xPos, yPos, 1.0, 0.0, 0.5, 0.0);
+				bild2.draw_rot(xPos, yPos, 1.0, 0.0, 0.5, 0.0);
+			}
+			if (dir == 0) {
+
+				bild1.draw_rot(xPos, yPos, 1.0, 0.0, 0.5, 0.0);
+			}
 		}
+
+		if (player == 1) {
+
+			if (dir == 1) {
+
+				mario2.draw_rot(xPos, yPos, 1.0, 0.0, 0.5, 0.0);
+			}
+			if (dir == 0) {
+
+				mario1.draw_rot(xPos, yPos, 1.0, 0.0, 0.5, 0.0);
+			}
+		}
+		
 
 		for (int i = 0; i < v_plat.size() - 1; i++) {
 
