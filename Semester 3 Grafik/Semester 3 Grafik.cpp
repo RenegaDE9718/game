@@ -88,8 +88,8 @@ vector<platform> createPlatforms(vector<platform> v_plat, int windowHeight) {
 
 bool collision(vector<platform> v_plat, double xPos, double yPos) {
 
-	double figLinks = xPos - 50;		// Hitbox Ende links
-	double figRechts = xPos + 50;		// Hitbox Ende rechts
+	double figLinks = xPos - 25;		// Hitbox Ende links
+	double figRechts = xPos + 25;		// Hitbox Ende rechts
 
 	for (int i = 0; i < v_plat.size() - 1; i++) {
 
@@ -121,13 +121,6 @@ vector<platform>moveScreen(vector<platform> v_plat, int speed) {
 
 }
 
-int scoreCount(int score) {
-	score += 5;
-	return score;
-}
-
-
-
 class GameWindow : public Gosu::Window {
 
 public:
@@ -136,6 +129,7 @@ public:
 	bool right;
 	bool jump = 0;
 	bool gameOver = 0;
+	bool dir = 0;
 
 	int speed = 8;				//Geschwindigkeit 
 	int gravity = speed;
@@ -148,14 +142,18 @@ public:
 	vector<platform> v_plat;
 
 
-	Gosu::Image bild;
+	Gosu::Image bild1;
+	Gosu::Image bild2;
+	Gosu::Image gameover;
 	Gosu::Image bild_platform;
 	Gosu::Sample Beep;
-	Gosu::Font test = 50;
+	Gosu::Font text = 50;
 
 	GameWindow()
 		: Window(windowWidth, windowHeight)
-		, bild("placeholder.png")
+		, bild1("R_player.png")
+		, bild2("L_player.png")
+		, gameover("Gameover.png")
 		, bild_platform("platform.png")
 		, Beep("Beep.wav")
 	{
@@ -181,13 +179,15 @@ public:
 		nichtzeichnen = 0;
 		if (left == 1 && gameOver == 0) {		// Bewegt die Spielfigur nach links
 			xPos -= 7;
+			dir = 1;
 		}
 
 		if (right == 1 && gameOver == 0) {		// Bewegt die Spielfigur nach rechts
 			xPos += 7;
+			dir = 0;
 		}
 
-		if (yPos + bild.height() <= windowHeight && jump == 0) { // Schwerkraft, wirkt erst nach erreichen der maximalen Sprunghöhe
+		if (yPos + bild1.height() <= windowHeight && jump == 0) { // Schwerkraft, wirkt erst nach erreichen der maximalen Sprunghöhe
 			yPos += gravity;
 		}
 
@@ -215,7 +215,7 @@ public:
 			xPos = xPos - windowWidth;
 		}
 
-		if ((yPos + bild.height()) > (v_plat.at(0).getY() + 10)) {
+		if ((yPos + bild1.height()) > (v_plat.at(0).getY() + 10)) {
 			gameOver = 1;
 		}
 
@@ -223,23 +223,33 @@ public:
 
 	void draw() override {
 
-		test.draw("score:", windowWidth - 200, 0, 1.0, 1.0, 1.0, Gosu::Color::WHITE);
-		test.draw(to_string(score), windowWidth - 200, 50, 1.0, 1.0, 1.0, Gosu::Color::WHITE);
+		text.draw("score:", windowWidth - 200, 0, 1.0, 1.0, 1.0, Gosu::Color::WHITE);
+		text.draw(to_string(score), windowWidth - 200, 50, 1.0, 1.0, 1.0, Gosu::Color::WHITE);
 		platform p;
-		bild.draw_rot(xPos, yPos, 0.0, 0.0, 0.5, 0.0);
 
-		if (nichtzeichnen == 0)
-		{
+		if (dir == 1) {
 
-			for (int i = 0; i < v_plat.size() - 1; i++) {
+			bild2.draw_rot(xPos, yPos, 1.0, 0.0, 0.5, 0.0);
+		}
+		if (dir == 0) {
+
+			bild1.draw_rot(xPos, yPos, 1.0, 0.0, 0.5, 0.0);
+		}
+
+		for (int i = 0; i < v_plat.size() - 1; i++) {
 
 				p = v_plat.at(i);
 
 				bild_platform.draw_rot(p.getX(), p.getY(), 0.0, 0.0, 0.0, 0.0, 1.0, 1.0);
 
-			}
+		}
+
+		if(gameOver == 1) {
+
+			gameover.draw_rot(windowWidth / 2, windowHeight / 2, 2.0, 0.0, 0.5, 0.5, 1.0, 1.0);
 		}
 	}
+
 };
 
 
