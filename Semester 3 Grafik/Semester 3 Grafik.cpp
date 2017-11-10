@@ -126,6 +126,7 @@ public:
 	bool left;
 	bool right;
 	bool m;
+	bool d;
 	bool jump = 0;
 	bool gameOver = 0;
 	bool dir = 0;
@@ -175,6 +176,7 @@ public:
 		left = input().down(Gosu::ButtonName::KB_LEFT);
 		right = input().down(Gosu::ButtonName::KB_RIGHT);
 		m = input().down(Gosu::ButtonName::KB_M);
+		d = input().down(Gosu::ButtonName::KB_D);
 
 		v_plat = createPlatforms(v_plat, windowHeight);
 
@@ -212,7 +214,7 @@ public:
 		{
 			jump = false;
 			distance = 0;
-			
+
 		}
 
 		if (xPos < 0 && gameOver == 0) {			// Verlassen des Bildschirms nach links und dann wechsel nach rechts
@@ -232,7 +234,7 @@ public:
 			lippe = 1;
 		}
 
-		if (lippe == 1 && xLippe >=  0)
+		if (lippe == 1 && xLippe >= 0)
 		{
 			xLippe -= 10;
 
@@ -241,10 +243,16 @@ public:
 		if (xLippe == 0) {
 			lippe = 0;
 			xLippe = windowWidth;
-		}	
+		}
 
-		if (m == 1)
+
+		if (m == 1) {
 			player = 1;
+		}
+
+		if (d == 1) {
+			player = 0;
+		}
 	}
 
 	void draw() override {
