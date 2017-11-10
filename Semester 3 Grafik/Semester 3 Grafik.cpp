@@ -13,6 +13,7 @@ using namespace std;
 
 const int windowHeight = 1600;
 const int windowWidth = 700;
+int score = 0;
 
 bool nichtzeichnen = 0;
 
@@ -115,8 +116,14 @@ vector<platform>moveScreen(vector<platform> v_plat, int speed) {
 		v_plat.at(i).setY((v_plat.at(i).getY() + speed));
 	}
 
+	score += 5;
 	return v_plat;
 
+}
+
+int scoreCount(int score) {
+	score += 5;
+	return score;
 }
 
 
@@ -128,13 +135,13 @@ public:
 	bool left;
 	bool right;
 	bool jump = 0;
+	bool gameOver = 0;
 
 	int speed = 8;				//Geschwindigkeit 
 	int gravity = speed;
 	int distance = 0;		// Zählvariable für die Sprunghöhe
 	int jumpHeight = 300;	// Festgelegte Sprunghöhe
-	int score = 0;
-
+	
 	double xPos = windowWidth / 2;
 	double yPos = 1200;
 
@@ -172,11 +179,11 @@ public:
 		v_plat = createPlatforms(v_plat, windowHeight);
 
 		nichtzeichnen = 0;
-		if (left == 1) {		// Bewegt die Spielfigur nach links
+		if (left == 1 && gameOver == 0) {		// Bewegt die Spielfigur nach links
 			xPos -= 7;
 		}
 
-		if (right == 1) {		// Bewegt die Spielfigur nach rechts
+		if (right == 1 && gameOver == 0) {		// Bewegt die Spielfigur nach rechts
 			xPos += 7;
 		}
 
@@ -184,12 +191,12 @@ public:
 			yPos += gravity;
 		}
 
-		if (collision(v_plat, xPos, yPos) == 1 && jump == 0) { // Sprungvariable setzen
+		if ((collision(v_plat, xPos, yPos) == 1 && jump == 0) && gameOver == 0) { // Sprungvariable setzen
 			jump = true;
 			Beep.play(1, 0.5, 0);
 		}
 
-		if (jump == 1 && jumpHeight > distance) {	// Funktion für den Sprung der Spielfigur
+		if (jump == 1 && jumpHeight > distance && gameOver == 0) {	// Funktion für den Sprung der Spielfigur
 			yPos -= speed;
 			distance += speed;
 		}
@@ -200,20 +207,24 @@ public:
 			
 		}
 
-		if (xPos < 0) {			// Verlassen des Bildschirms nach links und dann wechsel nach rechts
+		if (xPos < 0 && gameOver == 0) {			// Verlassen des Bildschirms nach links und dann wechsel nach rechts
 			xPos = windowWidth + xPos;
 		}
 
-		if (xPos > windowWidth) {		// Verlassen des Bildschirms nach rechts und dann wechsel nach links
+		if (xPos > windowWidth && gameOver == 0) {		// Verlassen des Bildschirms nach rechts und dann wechsel nach links
 			xPos = xPos - windowWidth;
+		}
+
+		if ((yPos + bild.height()) > (v_plat.at(0).getY() + 10)) {
+			gameOver = 1;
 		}
 
 	}
 
 	void draw() override {
 
-		test.draw("score:", windowWidth - 200, 0, 0.0, 1.0, 1.0, Gosu::Color::WHITE);
-		test.draw(to_string(score), windowWidth - 200, 50, 0.0, 1.0, 1.0, Gosu::Color::WHITE);
+		test.draw("score:", windowWidth - 200, 0, 1.0, 1.0, 1.0, Gosu::Color::WHITE);
+		test.draw(to_string(score), windowWidth - 200, 50, 1.0, 1.0, 1.0, Gosu::Color::WHITE);
 		platform p;
 		bild.draw_rot(xPos, yPos, 0.0, 0.0, 0.5, 0.0);
 
