@@ -127,6 +127,7 @@ public:
 	bool right;
 	bool m;
 	bool d;
+	bool l;
 	bool jump = 0;
 	bool gameOver = 0;
 	bool dir = 0;
@@ -151,6 +152,8 @@ public:
 	Gosu::Image bild2;
 	Gosu::Image mario1;
 	Gosu::Image mario2;
+	Gosu::Image lippeKopf1;
+	Gosu::Image lippeKopf2;
 	Gosu::Image gameover;
 	Gosu::Image easteregg;
 	Gosu::Image bild_platform;
@@ -163,6 +166,8 @@ public:
 		, bild2("L_player.png")
 		, mario1("r_Mario.png")
 		, mario2("l_Mario.png")
+		, lippeKopf1("llippeKopf.png")
+		, lippeKopf2("rlippeKopf.png")
 		, easteregg("lippe.png")
 		, gameover("Gameover.png")
 		, bild_platform("platform.png")
@@ -177,6 +182,7 @@ public:
 		right = input().down(Gosu::ButtonName::KB_RIGHT);
 		m = input().down(Gosu::ButtonName::KB_M);
 		d = input().down(Gosu::ButtonName::KB_D);
+		l = input().down(Gosu::ButtonName::KB_L);
 
 		v_plat = createPlatforms(v_plat, windowHeight);
 
@@ -250,6 +256,9 @@ public:
 			player = 1;
 		}
 
+		if (l == 1) {
+			player = 2;
+		}
 		if (d == 1) {
 			player = 0;
 		}
@@ -285,6 +294,18 @@ public:
 				mario1.draw_rot(xPos, yPos, 1.0, 0.0, 0.5, 0.0);
 			}
 		}
+
+		if (player == 2) {
+
+			if (dir == 1) {
+
+				lippeKopf1.draw_rot(xPos, yPos, 1.0, 0.0, 0.5, 0.0);
+			}
+			if (dir == 0) {
+
+				lippeKopf2.draw_rot(xPos, yPos, 1.0, 0.0, 0.5, 0.0);
+			}
+		}
 		
 
 		for (int i = 0; i < v_plat.size() - 1; i++) {
@@ -301,7 +322,7 @@ public:
 		}
 
 		if (lippe == 1) {
-			easteregg.draw_rot(xLippe, windowHeight, 0.0, 0.0, 1.0, 1.0, 1.0, 1.0);
+			easteregg.draw_rot(xLippe, windowHeight, 0.0, 0.0, 1.0, 1.0, 0.5, 0.5);
 		}
 
 	}
