@@ -15,7 +15,7 @@ const int windowHeight = 1600;
 const int windowWidth = 700;
 int score = 0;
 
-class platform {
+class platform {		// Klasse der Plattformen, mit Funktionen für Lesen und Schreiben der X und Y - Koordinate
 
 	double xPlat;
 	double yPlat;
@@ -50,7 +50,7 @@ public:
 
 };
 
-vector<platform> createPlatforms(vector<platform> v_plat, int windowHeight) {
+vector<platform> createPlatforms(vector<platform> v_plat, int windowHeight) {		// Elemente der Plattform Klasse werden in den Vektor gefüllt
 	platform p;
 
 	if (v_plat.size() == 0) {		// Erzeugen der ersten Platform
@@ -123,41 +123,41 @@ class GameWindow : public Gosu::Window {
 
 public:
 
-	bool left;
-	bool right;
-	bool m;
-	bool d;
-	bool l;
+	bool left;				// Tastaturabfrage Bools
+	bool right;				//		-"-
+	bool m;					//		-"-
+	bool d;					//		-"-
+	bool l;					//		-"-
 	bool jump = 0;
 	bool gameOver = 0;
-	bool dir = 0;
+	bool dir = 0;			// Richtung der Spielfigur
 	bool lippe  = 0;
 
-	int speed = 8;				//Geschwindigkeit 
+	int speed = 8;			//Geschwindigkeit 
 	int gravity = speed;
 	int distance = 0;		// Zählvariable für die Sprunghöhe
 	int jumpHeight = 300;	// Festgelegte Sprunghöhe
-	int player = 0;
+	int player = 0;			// Nummer des ausgewählten Characters
 	
-	double xPos = windowWidth / 2;
-	double yPos = 1200;
+	double xPos = windowWidth / 2;	// x Startposition des Characters
+	double yPos = 1200;				// y Startposition des Characters
 	double xLippe = windowWidth;
 	double count = 1;
 	
 
-	vector<platform> v_plat;
+	vector<platform> v_plat;		// Erstellen des Vektors für die Elemente der Plattform Klasse
 
 
-	Gosu::Image bild1;
-	Gosu::Image bild2;
-	Gosu::Image mario1;
-	Gosu::Image mario2;
-	Gosu::Image lippeKopf1;
+	Gosu::Image bild1;			// Bilddateien für die verschiedenen Character
+	Gosu::Image bild2;			//		-"-
+	Gosu::Image mario1;			//		-"-
+	Gosu::Image mario2;			//		-"-
+	Gosu::Image lippeKopf1;		//		-"-
 	Gosu::Image lippeKopf2;
 	Gosu::Image gameover;
-	Gosu::Image easteregg;
 	Gosu::Image bild_platform;
 	Gosu::Sample Beep;
+	Gosu::Image easteregg;
 	Gosu::Font text = 50;
 
 	GameWindow()
@@ -173,20 +173,20 @@ public:
 		, bild_platform("platform.png")
 		, Beep("Beep.wav")
 	{
-		set_caption("Gosu Tutorial Game mit Git");
+		set_caption("Doodle Jump");
 	}
 
 	void update() override {
 
-		left = input().down(Gosu::ButtonName::KB_LEFT);
-		right = input().down(Gosu::ButtonName::KB_RIGHT);
-		m = input().down(Gosu::ButtonName::KB_M);
-		d = input().down(Gosu::ButtonName::KB_D);
-		l = input().down(Gosu::ButtonName::KB_L);
+		left = input().down(Gosu::ButtonName::KB_LEFT);			//
+		right = input().down(Gosu::ButtonName::KB_RIGHT);		//
+		m = input().down(Gosu::ButtonName::KB_M);				// Tastatur Abfragen
+		d = input().down(Gosu::ButtonName::KB_D);				//
+		l = input().down(Gosu::ButtonName::KB_L);				//
 
 		v_plat = createPlatforms(v_plat, windowHeight);
 
-		if (yPos < (windowHeight / 2)) {
+		if (yPos < (windowHeight / 2)) {		// Bewegt den Spieler und alle Plattformen ein Stück nach unten, sobald die Mitte des Bildschirms überschritten wird
 
 			v_plat = moveScreen(v_plat, speed);
 			yPos += speed;
@@ -231,11 +231,22 @@ public:
 			xPos = xPos - windowWidth;
 		}
 
-		if ((yPos + bild1.height()) > (v_plat.at(0).getY() + 10)) {		//Fällt der Spieler auf den Boden ist das Spiel vorbei, GAMEOVER wird angezeigt
+		if ((yPos + bild1.height()) > (v_plat.at(0).getY() + 10) || (yPos + bild1.height()) == windowHeight) {		//Fällt der Spieler auf den Boden ist das Spiel vorbei
 			gameOver = 1;
 		}
 
-		if ((score / 1000) == count) {
+		if (m == 1) {		// Characterauswahl per Tastendruck
+			player = 1;		// M für Mario
+		}
+
+		if (l == 1) {		// Characterauswahl per Tastendruck
+			player = 2;		// L für Easteregg
+		}
+		if (d == 1) {		// Characterauswahl per Tastendruck
+			player = 0;		// D für T-Rex
+		}
+
+		if ((score / 1000) == count) {			// Alle 1000 Punkte wird das Easteregg getriggert
 			count++;
 			lippe = 1;
 		}
@@ -252,26 +263,16 @@ public:
 		}
 
 
-		if (m == 1) {
-			player = 1;
-		}
-
-		if (l == 1) {
-			player = 2;
-		}
-		if (d == 1) {
-			player = 0;
-		}
 	}
 
 	void draw() override {
 
-		text.draw("score:", windowWidth - 200, 0, 1.0, 1.0, 1.0, Gosu::Color::WHITE);
-		text.draw(to_string(score), windowWidth - 200, 50, 1.0, 1.0, 1.0, Gosu::Color::WHITE);
+		text.draw("score:", windowWidth - 200, 0, 1.0, 1.0, 1.0, Gosu::Color::WHITE);				// 
+																									// Text für die Score Anzeige
+		text.draw(to_string(score), windowWidth - 200, 50, 1.0, 1.0, 1.0, Gosu::Color::WHITE);		//
 		
-		platform p;
 
-		if (player == 0) {
+		if (player == 0) {											// Zeichnen des Characters je nach Auswahl
 
 			if (dir == 1) {
 
@@ -283,7 +284,7 @@ public:
 			}
 		}
 
-		if (player == 1) {
+		if (player == 1) {											// Zeichnen des Characters je nach Auswahl
 
 			if (dir == 1) {
 
@@ -295,7 +296,7 @@ public:
 			}
 		}
 
-		if (player == 2) {
+		if (player == 2) {											// Zeichnen des Characters je nach Auswahl
 
 			if (dir == 1) {
 
@@ -307,8 +308,9 @@ public:
 			}
 		}
 		
+		platform p;
 
-		for (int i = 0; i < v_plat.size() - 1; i++) {
+		for (int i = 0; i < v_plat.size() - 1; i++) {										// Zeichnen der im Vektor gespeicherten Plattformen
 
 				p = v_plat.at(i);
 
@@ -316,12 +318,12 @@ public:
 
 		}
 
-		if(gameOver == 1) {
+		if(gameOver == 1) {																	// Zeichnen des GameOver Screens, wenn der gameOver bool true wird
 
 			gameover.draw_rot(windowWidth / 2, windowHeight / 2, 2.0, 0.0, 0.5, 0.5, 1.0, 1.0);
 		}
 
-		if (lippe == 1) {
+		if (lippe == 1) {																	// Zeichnen des Eastereggs
 			easteregg.draw_rot(xLippe, windowHeight, 0.0, 0.0, 1.0, 1.0, 0.5, 0.5);
 		}
 
