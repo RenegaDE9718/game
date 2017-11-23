@@ -53,7 +53,7 @@ public:
 vector<platform> createPlatforms(vector<platform> v_plat, int windowHeight) {		// Elemente der Plattform Klasse werden in den Vektor gefüllt
 	platform p;
 
-	if (v_plat.size() == 0) {		// Erzeugen der ersten Platform
+	if (v_plat.size() == 0) {		// Erzeugen der ersten Platform an einer festen Position
 
 		p.setX(windowWidth / 2 - 50);
 		p.setY(windowHeight - 10);
@@ -62,8 +62,8 @@ vector<platform> createPlatforms(vector<platform> v_plat, int windowHeight) {		/
 
 	if (v_plat.size() < windowHeight / 50) {		// Platform Vector auffüllen
 
-		p.setX(rand() % (windowWidth - 99));
-		p.setY((v_plat.back().getY() - (rand() % 200 + 50)));
+		p.setX(rand() % (windowWidth - 99));		// x Position
+		p.setY((v_plat.back().getY() - (rand() % 200 + 50)));		// Abstand zur nächsten Plattform
 
 		v_plat.push_back(p);
 
@@ -84,7 +84,7 @@ vector<platform> createPlatforms(vector<platform> v_plat, int windowHeight) {		/
 	return v_plat;
 }
 
-bool collision(vector<platform> v_plat, double xPos, double yPos) {
+bool collision(vector<platform> v_plat, double xPos, double yPos) {			// Testet ob der Spieler auf eine Plattform springt
 
 	double figLinks = xPos - 25;		// Hitbox Ende links
 	double figRechts = xPos + 25;		// Hitbox Ende rechts
@@ -107,7 +107,7 @@ bool collision(vector<platform> v_plat, double xPos, double yPos) {
 	return 0;
 }
 
-vector<platform>moveScreen(vector<platform> v_plat, int speed) {
+vector<platform>moveScreen(vector<platform> v_plat, int speed) {		// Bewegt alle Objekte auf dem Bildschirm nach unten, sobald der Spieler höher als die Bildschirmmitte springt
 
 	for (int i = 0; i < v_plat.size() - 1; i++)
 	{
@@ -153,9 +153,9 @@ public:
 	Gosu::Image mario1;			//		-"-
 	Gosu::Image mario2;			//		-"-
 	Gosu::Image lippeKopf1;		//		-"-
-	Gosu::Image lippeKopf2;
-	Gosu::Image gameover;
-	Gosu::Image bild_platform;
+	Gosu::Image lippeKopf2;		//		-"-
+	Gosu::Image gameover;		// Bilddatei Gameover Screen
+	Gosu::Image bild_platform;	// Bilddatei für die Plattform
 	Gosu::Sample Beep;
 	Gosu::Image easteregg;
 	Gosu::Font text = 50;
@@ -246,18 +246,18 @@ public:
 			player = 0;		// D für T-Rex
 		}
 
-		if ((score / 1000) == count) {			// Alle 1000 Punkte wird das Easteregg getriggert
-			count++;
+		if ((score / 1000) == count) {			// Alle 5000 Punkte wird das Easteregg getriggert...
 			lippe = 1;
+			count++;
 		}
 
 		if (lippe == 1 && xLippe >= 0)
 		{
-			xLippe -= 10;
+			xLippe -= 8;
 
 		}
 
-		if (xLippe == 0) {
+		if (xLippe < 0) {
 			lippe = 0;
 			xLippe = windowWidth;
 		}
